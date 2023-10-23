@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">About Me</string>
+    <string name="name">Simon Francisco</string>
+    <string name="yellow_star">Yellow Star</string>
+    <string name="bio"> Hi friends, I\'m Simon Francisco, I\'m from Angola.
+    \n\nIt\'s a pleasure to be here. I\'m now trying to learn Android Development and although the process
+    isn\'t easy, it\'s very rewarding. I\'m trying my best.
+    \n\nIt may not be good enough, but it\'s my best.
+    \n\nThe journey is not one of the easiest, lots of obstacles, stumbling blocks and so on.
+        But I know that my Redeemer lives and with my own eyes I shall see His face.
+    \n\nLet this be the start of something great, the Lord is my witness.
+    \n\nMay God help us, amen!</string>
+</resources>
