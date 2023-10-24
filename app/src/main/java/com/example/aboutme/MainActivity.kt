@@ -1,43 +1,43 @@
 package com.example.aboutme
 
 import android.content.Context
-import android.inputmethodservice.InputMethodService
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    //Creating variables to get our text from TextView
-    lateinit var editText: EditText
-    lateinit var nicknameTextView: TextView
+
+    //Getting binding in order to stop using "findViewById", this can slow down our app
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //SetContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         //Getting the button working
-        findViewById<Button>(R.id.done_button).setOnClickListener{
+        binding.doneButton.setOnClickListener {
             addNickname(it)
         }
     }
-    private fun addNickname(view: View){
-        //Finding our Textview and EditText
-        editText = findViewById(R.id.nickname_edit)
-        nicknameTextView = findViewById(R.id.nickname_text)
+
+    private fun addNickname(view: View) {
 
         //Playing with visibility
-        nicknameTextView.text = editText.text
-        editText.visibility = View.GONE
-        view.visibility = View.GONE
-        nicknameTextView.visibility = View.VISIBLE
+        binding.apply {
+            nicknameText.text = nicknameEdit.text
+            invalidateAll()
+            nicknameEdit.visibility = View.GONE
+            doneButton.visibility = View.GONE
+            nicknameText.visibility = View.VISIBLE
+        }
 
         //Hiding the keyboard
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
-
 
 
     }
