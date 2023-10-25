@@ -12,12 +12,16 @@ class MainActivity : AppCompatActivity() {
 
     //Getting binding in order to stop using "findViewById", this can slow down our app
     private lateinit var binding: ActivityMainBinding
+
+    //Creating an instance of MyName
+    private val myName: MyName = MyName("Simon Francisco")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //SetContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        //Setting the value of myName
+        binding.myName = myName
         //Getting the button working
         binding.doneButton.setOnClickListener {
             addNickname(it)
@@ -26,9 +30,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun addNickname(view: View) {
 
-        //Playing with visibility
+        //Playing with visibility and settings values
         binding.apply {
-            nicknameText.text = nicknameEdit.text
+            //nicknameText.text = nicknameEdit.text
+            myName?.nickname = nicknameEdit.text.toString()
             invalidateAll()
             nicknameEdit.visibility = View.GONE
             doneButton.visibility = View.GONE
